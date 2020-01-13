@@ -10,7 +10,7 @@ A simple php application to test docker using [the php:7.4-apache image from Doc
 ## Usage
 
 * To reach the application:
-    * Go to [http://127.0.0.1:8000/public/index.php](http://127.0.0.1:8000/public/index.php) from a browser.
+    * Go to [http://127.0.0.1:8000/public](http://127.0.0.1:8000/public) from a browser.
 * To stop and delete the container:
     1. Run `docker ps` and copy the container id.
     2. Run `docker stop pasteContainerIdHere` to stop the container.
