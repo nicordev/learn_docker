@@ -1,0 +1,13 @@
+web:
+  image: nginx:latest
+  ports:
+    - "8003:80"
+  volumes:
+    - ./:/app
+    - ./site-3.conf:/etc/nginx/conf.d/default.conf
+  links:
+    - php
+php:
+  image: php:7-fpm
+  volumes:
+    - .:/app
