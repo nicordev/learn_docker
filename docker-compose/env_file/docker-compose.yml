@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  php:
+    image: "php:apache"
+    volumes:
+    - ./:/var/www/html
+    env_file:
+      fruits.env
+    environment: # these variables can be accessible from the app (index.php)
+      FRUITS: "${FRUITS} cherry peach" # here FRUITS from fruits.env is being overriden, ${FRUITS} comes from the shell FRUITS=raspberry docker-compose up
+      COLORS: ${BANANA_COLOR}
+    networks:
+      - fruit_network
+
+networks:
+  fruit_network: ~
