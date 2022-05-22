@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  php:
-    image: "php:7.4-cli"
+  php-apache:
+    image: "php:apache"
     volumes:
     - ./:/var/www/html
     env_file:
@@ -10,8 +10,21 @@ services:
     environment: # these variables can be accessible from the app (index.php)
       FRUITS: "${FRUITS} cherry peach" # here FRUITS from fruits.env is being overriden, ${FRUITS} comes from the shell FRUITS=raspberry docker-compose up
       COLORS: ${BANANA_COLOR}
-    networks:
+    networks: # using network: http://172.26.0.2
       - fruit_network
+
+    # without usint network: http://192.168.176.2
+
+  # without apache, the php script is executed and displayed in the terminal then the container stop.
+  php-cli:
+    image: "php:7.4-cli"
+    volumes:
+    - ./:/var/www/html
+    env_file:
+      fruits.env
+    environment:
+      FRUITS: "${FRUITS} cherry peach"
+      COLORS: ${BANANA_COLOR}
     working_dir: /var/www/html
     entrypoint: 'php index.php'
 
