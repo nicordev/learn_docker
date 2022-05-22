@@ -2,7 +2,7 @@ version: '3'
 
 services:
   php:
-    image: "php:apache"
+    image: "php:7.4-cli"
     volumes:
     - ./:/var/www/html
     env_file:
@@ -12,6 +12,8 @@ services:
       COLORS: ${BANANA_COLOR}
     networks:
       - fruit_network
+    working_dir: /var/www/html
+    entrypoint: 'php index.php'
 
 networks:
   fruit_network: ~

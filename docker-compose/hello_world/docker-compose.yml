@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  myfirstservice:
+    image: alpine
+    restart: always
+    container_name: hello_world
+    volumes:
+      - .:/app
+    working_dir: /app
+    # entrypoint: echo hello world # https://docs.docker.com/compose/compose-file/#entrypoint
+    # entrypoint:
+    # - echo
+    # - hello world
+    entrypoint: /app/hello.sh lara
+    # entrypoint: find / -name sh # find the shell
